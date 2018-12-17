@@ -1,0 +1,17 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8769
+spring:
+  application:
+    name: zl-zuul
+zuul:
+  routes:
+    zl-order:
+      path: /api-order/**
+      serviceId: zl-order
+    zl-order-ribbon:
+      path: /api-order-ribbon/**
+      serviceId: zl-order-ribbon

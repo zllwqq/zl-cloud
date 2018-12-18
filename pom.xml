@@ -14,6 +14,7 @@
         <module>zl-order</module>
         <module>zl-order-ribbon</module>
         <module>zl-zuul</module>
+        <module>zl-config</module>
     </modules>
 
     <properties>

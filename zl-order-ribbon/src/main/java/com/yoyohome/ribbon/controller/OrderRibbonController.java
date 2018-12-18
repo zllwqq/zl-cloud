@@ -14,7 +14,6 @@ public class OrderRibbonController {
 
     @GetMapping(value = "/hi")
     public String hi(@RequestParam String name) {
-        System.out.println("进入ribbon方法");
         return orderRibbonService.hello(name);
     }
 }

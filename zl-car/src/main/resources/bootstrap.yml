@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: zl-car
+  profiles:
+    active: prod
+  cloud:
+    config:
+      discovery:
+        service-id: zl-config
+        enabled: true
+      fail-fast: true
+      name: datasource, myc-order
+server:
+  port: 8765
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

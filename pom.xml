@@ -24,6 +24,7 @@
         <java.version>1.8</java.version>
         <spring-boot.version>2.0.6.RELEASE</spring-boot.version>
         <spring-cloud.version>Finchley.SR2</spring-cloud.version>
+        <fastjson.version>1.2.58</fastjson.version>
     </properties>
 
     <dependencyManagement>
@@ -42,14 +43,34 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+			    <groupId>com.alibaba</groupId>
+			    <artifactId>fastjson</artifactId>
+			    <version>${fastjson.version}</version>
+			</dependency>
         </dependencies>
     </dependencyManagement>
 
     <build>
+    	<pluginManagement>
+    		<plugins>
+    			<plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot.version}</version>
+                </plugin>
+    		</plugins>
+    	</pluginManagement>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
             </plugin>
         </plugins>
     </build>

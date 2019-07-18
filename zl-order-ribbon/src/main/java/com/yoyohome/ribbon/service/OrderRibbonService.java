@@ -13,7 +13,7 @@ public class OrderRibbonService {
 
     @HystrixCommand(fallbackMethod = "helloError")
     public String hello(String name) {
-        return restTemplate.getForObject("http://ZL-ORDER/hi?name="+name,String.class);
+        return restTemplate.getForObject("http://ZL-ORDER/hi?name="+name, String.class);
     }
 
     public String helloError(String name) {

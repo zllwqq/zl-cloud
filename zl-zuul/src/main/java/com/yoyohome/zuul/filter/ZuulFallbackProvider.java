@@ -48,7 +48,7 @@ public class ZuulFallbackProvider implements FallbackProvider {
 
 			public HttpStatus getStatusCode() throws IOException {
 				// 请求网关成功
-				return HttpStatus.OK;;
+				return HttpStatus.OK;
 			}
 
 			public int getRawStatusCode() throws IOException {

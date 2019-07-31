@@ -11,7 +11,7 @@ public class OrderRibbonService {
     @Autowired
     private RestTemplate restTemplate;
 
-    @HystrixCommand(fallbackMethod = "helloError")
+//    @HystrixCommand(fallbackMethod = "helloError")
     public String hello(String name) {
         return restTemplate.getForObject("http://ZL-ORDER/hi?name="+name, String.class);
     }

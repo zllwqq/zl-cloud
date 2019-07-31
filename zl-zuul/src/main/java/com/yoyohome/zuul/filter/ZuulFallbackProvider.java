@@ -16,7 +16,10 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSONObject;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Component
+@Slf4j
 public class ZuulFallbackProvider implements FallbackProvider {
 
 	/**
@@ -28,12 +31,14 @@ public class ZuulFallbackProvider implements FallbackProvider {
 	}
 
 	public ClientHttpResponse fallbackResponse(String route, Throwable cause) {
+		log.error(route, cause);
+		
 		
 		return new ClientHttpResponse() {
 
 			public InputStream getBody() throws IOException {
 				Map<String, Object> result = new HashMap<>();
-                result.put("message", "操作失败，系统繁忙请稍后重试！");
+                result.put("message", route + "操作失败，系统繁忙请稍后重试！");
                 result.put("data", Collections.EMPTY_MAP);
                 result.put("businessCode", "-0000");
                 result.put("code", -1);

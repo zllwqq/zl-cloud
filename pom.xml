@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.yoyohome</groupId>
     <artifactId>zl-cloud</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>zl-cloud</name>
-    <description></description>
+    <description/>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.6.RELEASE</version>
+        <relativePath/>
+    </parent>
 
     <modules>
         <module>zl-eureka</module>
@@ -17,6 +23,9 @@
         <module>zl-config</module>
         <module>zl-car</module>
         <module>zl-gateway</module>
+        <module>zl-car-api</module>
+        <module>zl-common</module>
+		<module>zl-user</module>
     </modules>
 
     <properties>
@@ -26,6 +35,12 @@
         <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
         <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
         <fastjson.version>1.2.58</fastjson.version>
+        <nacos.version>0.2.1.RELEASE</nacos.version>
+        <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
+        <springfox.version>2.9.2</springfox.version>
+        <swagger-bootstrap-ui.version>1.9.4</swagger-bootstrap-ui.version>
+        <okhttp.version>4.1.0</okhttp.version>
+        <hutool.version>4.6.1</hutool.version>
     </properties>
 
 	<dependencies>
@@ -38,6 +53,7 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -45,6 +61,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+             -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -53,14 +70,58 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
 			    <groupId>com.alibaba</groupId>
 			    <artifactId>fastjson</artifactId>
 			    <version>${fastjson.version}</version>
 			</dependency>
+            
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox.version}</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>swagger-bootstrap-ui</artifactId>
+                <version>${swagger-bootstrap-ui.version}</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>${okhttp.version}</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>com.yoyohome</groupId>
+                <artifactId>zl-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>com.yoyohome</groupId>
+                <artifactId>zl-car-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <build>
+        <!-- 
     	<pluginManagement>
     		<plugins>
     			<plugin>
@@ -82,5 +143,6 @@
                 </configuration>
             </plugin>
         </plugins>
+         -->
     </build>
 </project>

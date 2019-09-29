@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: zl-user
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        file-extension: yaml
+server:
+  port: 8766
+  
+---
+spring:
+  profiles: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: 47.105.152.217:8848
+#        ext-config:
+#        - data-id:
+#            zl-car-dev.yml
+#          group:
+#            ZL_GROUP
+      discovery:
+        server-addr: 47.105.152.217:8848

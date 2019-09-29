@@ -1,5 +1,1 @@
-server:  port: 18769
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/spring:  application:    name: zl-gateway  cloud:    gateway:      routes:      - id: zl-order        uri: lb://ZL-ORDER        predicates:          - path: /order/**          
+server:  port: 18769spring:  application:    name: zl-gateway  cloud:    gateway:      routes:      - id: zl-car        uri: lb://zl-car        predicates:          - Path=/car/**        filters:          - StripPrefix=1          - name: Hystrix            args:              name: fallbackcmd#              fallbackUri: forward:/fallback      - id: zl-user        uri: lb://zl-user        predicates:          - Path=/user/**        filters:          - StripPrefix=1#      default-filters:#      - name: Hystrix#        args:#          name: fallbackcmd#          fallbackUri: forward:/fallback                   nacos:      discovery:        server-addr: 47.105.152.217:8848        hystrix.command.fallbackcmd.execution.isolation.thread.timeoutInMilliseconds: 5000
